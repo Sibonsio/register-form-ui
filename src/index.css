@@ -1,0 +1,11 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#root {
+    font-family: "Stack Sans Headline", sans-serif;
+    background-color: rgb(98, 98, 255);
+    height: 100vh;
+}
