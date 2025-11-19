@@ -1,5 +1,5 @@
 .register {
-    background-color: rgb(82, 82, 255);
+    background-color: rgb(114, 114, 255);
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -23,6 +23,7 @@
     border-radius: 10px;
     height: 30px;
     cursor: pointer;
+    padding-left: 10px;
 }
 
 .heading {
@@ -60,6 +61,8 @@
 .form label {
     font-size: 14px;
     color: white;
+    display: flex;
+    align-items: center;
 }
 
 #usernamenote {
@@ -83,4 +86,10 @@
 
 .instructions {
     left: 0;
+}
+
+.icon {
+    height: 20px;
+    display: flex;
+    align-items: center;
 }

@@ -1,5 +1,6 @@
 import './Register.css'
 import { useRef, useState, useEffect } from 'react'
+import { Check, X } from 'lucide-react';
 
 
 
@@ -48,24 +49,24 @@ const Register = () => {
             <h1 className='heading'>Register</h1>
             <form className='form'>
                 <label htmlFor='username'>
-                    Username:
+                    Username: <span>{userName && validUserName && <Check color='green' className='icon' /> || userName && !validUserName && <X color='red' className='icon' />}</span>
                 </label>
                 <input id='username' type='text' ref={userRef} autoComplete='off' required onChange={(e) => { setUserName(e.target.value) }} aria-invalid={validUserName ? false : true}
                     onFocus={() => { setUserNameFocus(true) }} onBlur={() => { setUserNameFocus(false) }} aria-describedby='usernamenote' />
                 <p className={`${userName && userNameFocus && !validUserName ? 'instructions' : 'hidden'}`} id='usernamenote'>allow letters, digits, underscore, length must be 3–16</p>
                 <label htmlFor='password'>
-                    Password:
+                    Password: <span>{password && validPassword && <Check color='green' className='icon' /> || password && !validPassword && <X color='red' className='icon' />}</span>
                 </label>
                 <input id='password' type='password' required onChange={(e) => { setPassword(e.target.value) }} aria-invalid={validPassword ? false : true}
                     onFocus={() => { setPasswordFocus(true) }} onBlur={() => { setPasswordFocus(false) }} aria-describedby='passwordnote' />
                 <p className={`${passwordFocus && !validPassword ? 'instructions' : 'hidden'}`} id='usernamenote'>allow letters, digits, underscore, length must be 3–16</p>
                 <label htmlFor='confimpassword'>
-                    Confirm Password:
+                    Confirm Password: <span>{password && validPassword && validMatchPassword && matchPassword && < Check color='green' className='icon' /> || password && validPassword && !validMatchPassword && matchPassword && <X color='red' className='icon' />}</span>
                 </label>
                 <input id='confirmpassword' type='password' required onChange={(e) => { setMatchPassword(e.target.value) }} aria-invalid={validMatchPassword ? false : true}
                     onFocus={() => { setMatchPasswordFocus(true) }} onBlur={() => { setMatchPasswordFocus(false) }} aria-describedby='confirmnote' />
                 <p className={`${matchPassword && matchPasswordFocus && !validMatchPassword ? 'instructions' : 'hidden'}`} id='usernamenote'>allow letters, digits, underscore, length must be 3–16</p>
-                <button className='signup'>Sign up</button>
+                <button className='signup' disabled={!userName || !password || !matchPassword || !validUserName || !validPassword || !validMatchPassword}>Sign up</button>
             </form>
             <div className='login'>
                 <p className='already'>Already have an account?</p>
