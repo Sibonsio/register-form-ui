@@ -43,11 +43,20 @@ const Register = () => {
         setErrMsg('')
     }, [userName, password, matchPassword])
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if (!validUserName || !validPassword || !validMatchPassword) {
+            setSuccess(false)
+            setErrMsg('Invalid details')
+            return
+        }
+    }
 
     return (
         <section className='register'>
+            <p>{errMsg}</p>
             <h1 className='heading'>Register</h1>
-            <form className='form'>
+            <form className='form' onSubmit={handleSubmit}>
                 <label htmlFor='username'>
                     Username: <span>{userName && validUserName && <Check color='green' className='icon' /> || userName && !validUserName && <X color='red' className='icon' />}</span>
                 </label>
@@ -60,12 +69,12 @@ const Register = () => {
                 <input id='password' type='password' required onChange={(e) => { setPassword(e.target.value) }} aria-invalid={validPassword ? false : true}
                     onFocus={() => { setPasswordFocus(true) }} onBlur={() => { setPasswordFocus(false) }} aria-describedby='passwordnote' />
                 <p className={`${passwordFocus && !validPassword ? 'instructions' : 'hidden'}`} id='usernamenote'>must contain lowercase,must contain uppercase,must contain a number,must contain special character,minimum length 8</p>
-                <label htmlFor='confimpassword'>
+                <label htmlFor='passwordnote'>
                     Confirm Password: <span>{password && validPassword && validMatchPassword && matchPassword && < Check color='green' className='icon' /> || password && validPassword && !validMatchPassword && matchPassword && <X color='red' className='icon' />}</span>
                 </label>
                 <input id='confirmpassword' type='password' required onChange={(e) => { setMatchPassword(e.target.value) }} aria-invalid={validMatchPassword ? false : true}
                     onFocus={() => { setMatchPasswordFocus(true) }} onBlur={() => { setMatchPasswordFocus(false) }} aria-describedby='confirmnote' />
-                <p className={`${matchPassword && matchPasswordFocus && !validMatchPassword ? 'instructions' : 'hidden'}`} id='usernamenote'>password don't match</p>
+                <p className={`${matchPassword && matchPasswordFocus && !validMatchPassword ? 'instructions' : 'hidden'}`} id='confirmnote'>password don't match</p>
                 <button className='signup' disabled={!userName || !password || !matchPassword || !validUserName || !validPassword || !validMatchPassword}>Sign up</button>
             </form>
             <div className='login'>

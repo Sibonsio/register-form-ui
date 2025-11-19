@@ -65,7 +65,9 @@
     align-items: center;
 }
 
-#usernamenote {
+#usernamenote,
+#passwordnote,
+#confirmnote {
     background-color: rgba(9, 9, 9, 0.793);
     color: white;
     font-size: 12px;
