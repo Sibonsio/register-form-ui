@@ -59,13 +59,13 @@ const Register = () => {
                 </label>
                 <input id='password' type='password' required onChange={(e) => { setPassword(e.target.value) }} aria-invalid={validPassword ? false : true}
                     onFocus={() => { setPasswordFocus(true) }} onBlur={() => { setPasswordFocus(false) }} aria-describedby='passwordnote' />
-                <p className={`${passwordFocus && !validPassword ? 'instructions' : 'hidden'}`} id='usernamenote'>allow letters, digits, underscore, length must be 3–16</p>
+                <p className={`${passwordFocus && !validPassword ? 'instructions' : 'hidden'}`} id='usernamenote'>must contain lowercase,must contain uppercase,must contain a number,must contain special character,minimum length 8</p>
                 <label htmlFor='confimpassword'>
                     Confirm Password: <span>{password && validPassword && validMatchPassword && matchPassword && < Check color='green' className='icon' /> || password && validPassword && !validMatchPassword && matchPassword && <X color='red' className='icon' />}</span>
                 </label>
                 <input id='confirmpassword' type='password' required onChange={(e) => { setMatchPassword(e.target.value) }} aria-invalid={validMatchPassword ? false : true}
                     onFocus={() => { setMatchPasswordFocus(true) }} onBlur={() => { setMatchPasswordFocus(false) }} aria-describedby='confirmnote' />
-                <p className={`${matchPassword && matchPasswordFocus && !validMatchPassword ? 'instructions' : 'hidden'}`} id='usernamenote'>allow letters, digits, underscore, length must be 3–16</p>
+                <p className={`${matchPassword && matchPasswordFocus && !validMatchPassword ? 'instructions' : 'hidden'}`} id='usernamenote'>password don't match</p>
                 <button className='signup' disabled={!userName || !password || !matchPassword || !validUserName || !validPassword || !validMatchPassword}>Sign up</button>
             </form>
             <div className='login'>
