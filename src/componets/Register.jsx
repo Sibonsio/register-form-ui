@@ -59,6 +59,7 @@ const Register = () => {
             setUserName('')
             setPassword('')
             setMatchPassword('')
+            setErrMsg('Registered Successfully')
             console.log(response.data)
         } catch (error) {
             if (!error?.response) {
